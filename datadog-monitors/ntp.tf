@@ -11,5 +11,5 @@ resource "datadog_monitor" "ntp" {
     critical = 1
   }
 
-  tags = local.tag
+  tags = local.tags
 }
