@@ -27,3 +27,17 @@ resource "datadog_monitor" "disk-ro" {
 
   tags = local.tags
 }
+
+resource "datadog_monitor" "inodes" {
+  name    = "Inodes - {{host.name}} - {{device.name}}"
+  type    = "metric alert"
+  message = var.notify_email
+
+  query = "min(last_5m):avg:system.fs.inodes.in_use{*} by {device,host} > 90"
+
+  thresholds = {
+    critical = 90
+  }
+
+  tags = local.tags
+}
