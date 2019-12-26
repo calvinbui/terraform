@@ -1,5 +1,5 @@
 resource "datadog_monitor" "ntp" {
-  name    = "NTP Out of Sync - {{ host.name }}"
+  name    = "NTP Out of Sync - {{host.name}}"
   type    = "service check"
   message = var.notify_email
 
