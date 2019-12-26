@@ -11,3 +11,35 @@ resource "datadog_monitor" "docker-containers-stopped" {
 
   tags = local.tags
 }
+
+resource "datadog_monitor" "docker-service" {
+  name    = "Docker Not Running - {{host.name}}"
+  type    = "service check"
+  message = var.notify_email
+
+  query = "\"docker.service_up\".over(\"*\").by(\"host\").last(2).count_by_status()"
+
+  thresholds = {
+    ok       = 1
+    warning  = 1
+    critical = 3
+  }
+
+  tags = local.tags
+}
+
+resource "datadog_monitor" "docker-exit" {
+  name    = "Docker Container Crashed - {{host.name}}"
+  type    = "service check"
+  message = var.notify_email
+
+  query = "\"docker.exit\".over(\"*\").by(\"host\").last(2).count_by_status()"
+
+  thresholds = {
+    ok       = 1
+    warning  = 1
+    critical = 1
+  }
+
+  tags = local.tags
+}
