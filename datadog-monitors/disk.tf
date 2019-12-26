@@ -1,4 +1,4 @@
-resource "datadog_monitor" "agent" {
+resource "datadog_monitor" "disk-low" {
   name    = "Disk Space - {{host.name}}"
   type    = "metric alert"
   message = var.notify_email
