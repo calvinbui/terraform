@@ -1,5 +1,5 @@
 resource "datadog_monitor" "mem-low" {
-  name    = "Low Memory - {{host.name}}"
+  name    = "Memory - {{host.name}}"
   type    = "metric alert"
   message = var.notify_email
 

@@ -1,5 +1,5 @@
 resource "datadog_monitor" "cpu-high" {
-  name    = "High CPU - {{host.name}}"
+  name    = "CPU - {{host.name}}"
   type    = "metric alert"
   message = var.notify_email
 
