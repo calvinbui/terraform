@@ -1,12 +1,12 @@
-resource "datadog_monitor" "mem-low" {
-  name    = "Low Memory - {{host.name}}"
+resource "datadog_monitor" "cpu-high" {
+  name    = "High CPU - {{host.name}}"
   type    = "metric alert"
   message = var.notify_email
 
-  query = "max(last_5m):sum:system.mem.pct_usable{*} by {host} < 0.1"
+  query = "sum(last_5m):sum:system.load.norm.1{*} by {host} > 0.9"
 
   thresholds = {
-    critical = 0.1
+    critical = 0.9
   }
 
   tags = local.tags
