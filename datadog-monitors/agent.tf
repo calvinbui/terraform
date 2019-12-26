@@ -1,5 +1,5 @@
 resource "datadog_monitor" "agent" {
-  name    = "{{ host.name }} is not responding"
+  name    = "Not responding - {{ host.name }}"
   type    = "service check"
   message = var.notify_email
 
