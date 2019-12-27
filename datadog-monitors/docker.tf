@@ -29,16 +29,16 @@ resource "datadog_monitor" "docker-service" {
 }
 
 resource "datadog_monitor" "docker-exit" {
-  name    = "Docker Container Crashed - {{host.name}}"
+  name    = "Docker Container Crashed - {{host.name}} - {{container_name.name}}"
   type    = "service check"
   message = var.notify_email
 
-  query = "\"docker.exit\".over(\"*\").by(\"host\").last(2).count_by_status()"
+  query = "\"docker.exit\".over(\"*\").by(\"container_name\",\"host\").last(2).count_by_status()"
 
   thresholds = {
     ok       = 1
     warning  = 1
-    critical = 1
+    critical = 2
   }
 
   tags = local.tags
