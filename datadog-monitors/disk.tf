@@ -13,11 +13,11 @@ resource "datadog_monitor" "disk-low" {
 }
 
 resource "datadog_monitor" "disk-ro" {
-  name    = "Disk Read Only - {{host.name}}"
+  name    = "Disk Read Only - {{host.name}} - {{device.name}}"
   type    = "service check"
   message = var.notify_email
 
-  query = "\"disk.read_write\".over(\"*\").by(\"device\").last(6).count_by_status()"
+  query = "\"disk.read_write\".over(\"*\").by(\"device\",\"host\").last(6).count_by_status()"
 
   thresholds = {
     ok       = 1
