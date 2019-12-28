@@ -33,12 +33,12 @@ resource "datadog_monitor" "docker-exit" {
   type    = "service check"
   message = var.notify_email
 
-  query = "\"docker.exit\".over(\"*\").by(\"container_name\",\"host\").last(2).count_by_status()"
+  query = "\"docker.exit\".over(\"*\").by(\"container_name\",\"host\").last(6).count_by_status()"
 
   thresholds = {
     ok       = 1
     warning  = 1
-    critical = 2
+    critical = 5
   }
 
   tags = local.tags
