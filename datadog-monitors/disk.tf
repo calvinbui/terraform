@@ -25,6 +25,8 @@ resource "datadog_monitor" "disk-ro" {
     critical = 5
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }
 

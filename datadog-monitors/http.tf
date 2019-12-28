@@ -9,6 +9,8 @@ resource "datadog_monitor" "http-connect" {
     critical = 1
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }
 
@@ -22,6 +24,8 @@ resource "datadog_monitor" "http-cert" {
   thresholds = {
     critical = 14
   }
+
+  no_data_timeframe = 0
 
   tags = local.tags
 }

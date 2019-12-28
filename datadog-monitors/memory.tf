@@ -9,5 +9,7 @@ resource "datadog_monitor" "mem-low" {
     critical = 0.1
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }

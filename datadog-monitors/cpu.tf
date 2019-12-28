@@ -9,5 +9,7 @@ resource "datadog_monitor" "cpu-high" {
     critical = 0.9
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }

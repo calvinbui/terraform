@@ -9,6 +9,8 @@ resource "datadog_monitor" "docker-containers-stopped" {
     critical = 0
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }
 
@@ -25,6 +27,8 @@ resource "datadog_monitor" "docker-service" {
     critical = 3
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }
 
@@ -40,6 +44,8 @@ resource "datadog_monitor" "docker-exit" {
     warning  = 1
     critical = 5
   }
+
+  no_data_timeframe = 0
 
   tags = local.tags
 }
