@@ -9,6 +9,8 @@ resource "datadog_monitor" "disk-low" {
     critical = 0.9
   }
 
+  no_data_timeframe = 0
+
   tags = local.tags
 }
 
@@ -40,6 +42,8 @@ resource "datadog_monitor" "inodes" {
   thresholds = {
     critical = 90
   }
+
+  no_data_timeframe = 0
 
   tags = local.tags
 }
