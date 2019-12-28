@@ -20,8 +20,7 @@ resource "datadog_monitor" "http-cert" {
   query = "max(last_1d):avg:http.ssl.days_left{*} by {url} < 14"
 
   thresholds = {
-    critical          = 14
-    critical_recovery = 1
+    critical = 14
   }
 
   tags = local.tags
