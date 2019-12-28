@@ -17,7 +17,7 @@ resource "datadog_monitor" "disk-ro" {
   type    = "service check"
   message = var.notify_email
 
-  query = "\"disk.read_write\".over(\"*\").by(\"device\",\"host\").last(6).count_by_status()"
+  query = "\"disk.read_write\".over(\"*\").last(6).count_by_status()"
 
   thresholds = {
     ok       = 1
