@@ -5,3 +5,4 @@ locals {
 }
 
 variable "notify_email" {}
+variable "notify_mattermost" {}

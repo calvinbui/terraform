@@ -1,7 +1,7 @@
 resource "datadog_monitor" "http-connect" {
   name    = "HTTP Connection to {{url.name}}"
   type    = "metric alert"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "max(last_30m):avg:network.http.can_connect{*} by {url} < 1"
 
@@ -17,7 +17,7 @@ resource "datadog_monitor" "http-connect" {
 resource "datadog_monitor" "http-cert" {
   name    = "SSL Cert Expiry {{url.name}}"
   type    = "metric alert"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "max(last_1d):avg:http.ssl.days_left{*} by {url} < 14"
 

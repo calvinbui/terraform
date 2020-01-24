@@ -1,7 +1,7 @@
 resource "datadog_monitor" "ntp" {
   name    = "NTP Out of Sync - {{host.name}}"
   type    = "service check"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "\"ntp.in_sync\".over(\"*\").last(2).count_by_status()"
 

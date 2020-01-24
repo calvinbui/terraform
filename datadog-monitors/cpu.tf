@@ -1,7 +1,7 @@
 resource "datadog_monitor" "cpu-high" {
   name    = "CPU - {{host.name}}"
   type    = "metric alert"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "min(last_5m):sum:system.load.norm.1{*} by {host} > 0.9"
 

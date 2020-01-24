@@ -1,7 +1,7 @@
 resource "datadog_monitor" "systemd-unit" {
   name    = "SystemD Service - {{unit.name}}"
   type    = "service check"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "\"systemd.unit.state\".over(\"*\").by(\"unit\").last(2).count_by_status()"
 

@@ -1,7 +1,7 @@
 resource "datadog_monitor" "mongodb-connect" {
   name    = "MongoDB - {{server.name}}"
   type    = "service check"
-  message = var.notify_email
+  message = var.notify_email # it runs mattermost
 
   query = "\"mongodb.can_connect\".over(\"*\").by(\"server\").last(6).count_by_status()"
 

@@ -1,7 +1,7 @@
 resource "datadog_monitor" "mysql-connect" {
   name    = "MySQL - {{server.name}}"
   type    = "service check"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "\"mysql.can_connect\".over(\"*\").by(\"server\").last(6).count_by_status()"
 

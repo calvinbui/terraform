@@ -1,7 +1,7 @@
 resource "datadog_monitor" "mem-low" {
   name    = "Memory - {{host.name}}"
   type    = "metric alert"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "max(last_5m):sum:system.mem.pct_usable{*} by {host} < 0.1"
 

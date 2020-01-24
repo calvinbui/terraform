@@ -1,7 +1,7 @@
 resource "datadog_monitor" "postgres-connect" {
   name    = "PostgreSQL - {{server.name}}"
   type    = "service check"
-  message = var.notify_email
+  message = var.notify_mattermost
 
   query = "\"postgres.can_connect\".over(\"*\").by(\"server\").last(6).count_by_status()"
 
