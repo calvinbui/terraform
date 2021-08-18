@@ -1,5 +1,5 @@
 resource "minio_s3_bucket" "main" {
-  bucket = "octoprint"
+  bucket = local.app
   acl    = "public"
 }
 
@@ -24,12 +24,12 @@ data "minio_iam_policy_document" "main" {
 }
 
 resource "minio_iam_policy" "main" {
-  name   = "state-terraform-s3"
+  name   = "${local.app}-policy"
   policy = data.minio_iam_policy_document.main.json
 }
 
 resource "minio_iam_user" "main" {
-  name = "octoprint"
+  name = local.app
 }
 resource "minio_iam_user_policy_attachment" "main" {
   user_name   = minio_iam_user.main.id
