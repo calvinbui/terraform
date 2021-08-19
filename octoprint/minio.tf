@@ -6,7 +6,7 @@ resource "minio_s3_bucket" "main" {
 data "minio_iam_policy_document" "main" {
   statement {
     actions = [
-      "s3:ListBucket",
+      "s3:GetBucketLocation",
     ]
     resources = [
       "arn:aws:s3:::${minio_s3_bucket.main.bucket}",
