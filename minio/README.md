@@ -1,13 +1,12 @@
-# OctoPrint
+# Minio
 
 ## Terraform State
 
-Available at https://app.terraform.io/app/calvin/workspaces/octoprint
-
+Available at https://app.terraform.io/app/calvin/workspaces/minio
 
 ## ILM
 
-ILM will need to be applied manually:
+ILM will need to be applied manually, for example:
 
 ```console
 $ docker exec -it minio-mc bash

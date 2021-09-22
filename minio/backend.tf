@@ -4,7 +4,7 @@ terraform {
     organization = "calvin"
 
     workspaces {
-      name = "octoprint"
+      name = "minio"
     }
   }
 }
