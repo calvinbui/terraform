@@ -12,10 +12,5 @@ locals {
         }
       ],
     },
-    {
-      name = "mattermost"
-      acl  = "private"
-      ilm  = []
-    },
   ]
 }
